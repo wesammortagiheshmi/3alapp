@@ -48,7 +48,7 @@
         });
 
         $scope.shareAnywhere = function () {
-            $cordovaSocialSharing.share("This is your message");
+            $cordovaSocialSharing.share("I am using 3alapp app.","3alapp.com",null,"http://www.3alapp.com");
         }
 
         api.menus.all().then(function (data) {
