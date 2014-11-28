@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('GMA').controller('MainController', function ($scope, api, $ionicSideMenuDelegate, menuHandler, $rootScope, serverUrlHandler, storage) {
+    angular.module('GMA').controller('MainController', function ($scope, api, $ionicSideMenuDelegate, menuHandler, $rootScope, serverUrlHandler, storage, $cordovaSocialSharing) {
         $scope.isIos =  ionic.Platform.isIOS();
         $scope.ThemeCssClass = storage.data.ThemeCssClass;
         $scope.directionClass = "";
@@ -47,6 +47,9 @@
             $scope.showIosBackButton = true;
         });
 
+        $scope.shareAnywhere = function () {
+            $cordovaSocialSharing.share("This is your message");
+        }
 
         api.menus.all().then(function (data) {
             // list menu items in the menu side bar
