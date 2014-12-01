@@ -48,6 +48,7 @@
         });
 
         $scope.shareAnywhere = function () {
+            alert(window.plugins.socialsharing);
             $cordovaSocialSharing.share("I am using 3alapp app.","3alapp.com",null,"http://www.3alapp.com");
         }
 
