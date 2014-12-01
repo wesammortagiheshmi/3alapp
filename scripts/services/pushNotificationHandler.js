@@ -8,7 +8,7 @@ var pushApp = {
                 break;
             case 'message':
                 // this is the actual push notification. its format depends on the data model from the push server
-                alert(e.message);
+                this.triggerMessageRecievedEvent(e.message);
                 break;
             case 'error':
                 alert('GCM error = ' + e.msg);
@@ -22,7 +22,7 @@ var pushApp = {
         var pushNotification = window.plugins.pushNotification;
         if (event.alert) {
             navigator.notification.beep(1);
-            navigator.notification.alert(event.alert);
+            pushApp.triggerMessageRecievedEvent(event.alert);
         }
         if (event.badge) {
             console.log("Set badge on  " + pushNotification);
@@ -44,11 +44,18 @@ var pushApp = {
             pushApp.triggerRegsiterEvent(token);
         }
     },
-    
+
     triggerRegsiterEvent: function (token) {
         var event = document.createEvent('Event');
         event.initEvent('registerDeviceCompleted', true, true);
         window.pushToken = token;
+        document.dispatchEvent(event);
+    },
+
+    triggerMessageRecievedEvent: function (message) {
+        var event = document.createEvent('Event');
+        event.initEvent('messageRecieved', true, true);
+        window.pushMessage = message;
         document.dispatchEvent(event);
     }
 };
@@ -100,7 +107,7 @@ var pushApp = {
                     RegisterationToken: window.pushToken,
                     PlatformId: platformId
                 };
-                return api.pushNotifications.registerDevice(deviceInfo).then(function() {
+                return api.pushNotifications.registerDevice(deviceInfo).then(function () {
                     localStorage.setItem(localStorageKeyName, true);
                 });
             }

@@ -15,7 +15,13 @@
 
         document.addEventListener("deviceready", function () {
             ImgCache.options.debug = true;
-            ImgCache.init(function () {}, function () {});
+            ImgCache.init(function () { }, function () { });
+
+            if (window.plugins && window.plugins.socialsharing) {
+                window.plugins.socialsharing.iPadPopupCoordinates = function () {
+                    return "100,100,200,300";
+                };
+            }
 
             if (window.plugin && window.plugin.statusbarOverlay) window.plugin.statusbarOverlay.hide();
 
