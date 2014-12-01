@@ -18,9 +18,14 @@
             ImgCache.init(function () { }, function () { });
 
             if (window.plugins && window.plugins.socialsharing) {
-                window.plugins.socialsharing.iPadPopupCoordinates = function () {
+
+                alert("device ready:iPadPopupCoordinates");
+                window.plugins.socialsharing.iPadPopupCoordinates = function() {
                     return "100,100,200,300";
                 };
+            } else {
+                alert("window.plugins:" + window.plugins);
+                alert("window.plugins.socialsharing:" + window.plugins.socialsharing);
             }
 
             if (window.plugin && window.plugin.statusbarOverlay) window.plugin.statusbarOverlay.hide();

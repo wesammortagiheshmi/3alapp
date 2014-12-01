@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     angular.module('GMA').controller('MainController', function ($scope, api, $ionicSideMenuDelegate, menuHandler, $rootScope, serverUrlHandler, storage, $cordovaSocialSharing) {
-        $scope.isIos =  ionic.Platform.isIOS();
+        $scope.isIos = ionic.Platform.isIOS();
         $scope.ThemeCssClass = storage.data.ThemeCssClass;
         $scope.directionClass = "";
         $scope.directionAttr = "left";
@@ -48,8 +48,8 @@
         });
 
         $scope.shareAnywhere = function () {
-            alert(window.plugins.socialsharing);
-            $cordovaSocialSharing.share("I am using 3alapp app.","3alapp.com",null,"http://www.3alapp.com");
+            alert("$cordovaSocialSharing:" + $cordovaSocialSharing);
+            window.plugins.socialsharing.share("I am using 3alapp app.", "3alapp.com", null, "http://www.3alapp.com");
         }
 
         api.menus.all().then(function (data) {
