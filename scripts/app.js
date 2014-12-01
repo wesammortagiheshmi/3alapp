@@ -20,13 +20,12 @@
             if (window.plugins && window.plugins.socialsharing) {
 
                 alert("device ready:iPadPopupCoordinates");
-                window.plugins.socialsharing.iPadPopupCoordinates = function() {
+                window.plugins.socialsharing.iPadPopupCoordinates = function () {
                     return "100,100,200,300";
                 };
-            } else {
-                alert("window.plugins:" + window.plugins);
-                alert("window.plugins.socialsharing:" + window.plugins.socialsharing);
             }
+            if (window.plugins) alert("window.plugins:" + window.plugins);
+            if (window.plugins.socialsharing) alert("window.plugins.socialsharing:" + window.plugins.socialsharing);
 
             if (window.plugin && window.plugin.statusbarOverlay) window.plugin.statusbarOverlay.hide();
 
